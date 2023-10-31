@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Oliver Anderson",
+        "email": "oanderson@gmail.com",
+        "password": "password123"
+    },
+    {
+        "name": "Mia Rodriguez",
+        "email": "mrod@gmail.com",
+        "password": "password123"
+    },
+    {
+        "name": "Samuel Parker",
+        "email": "sparker@gmail.com",
+        "password": "password123"
+    }
+]
