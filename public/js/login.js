@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loginButton.addEventListener('click', async (event) => {
         event.preventDefault();
 
-        // Get the values entered by the user
+        // Get the values entered by the user for login
         const email = emailInput.value.trim();
         const password = passwordInput.value.trim();
 
