@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.querySelector('#login-email');
     const passwordInput = document.querySelector('#login-password');
     const loginButton = document.querySelector('#login-btn');
+    const signupButton = document.querySelector('#signup-btn');
 
     // Add an event listener to the login button
     loginButton.addEventListener('click', async (event) => {
@@ -23,10 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful login
-                document.location.replace('/dashboard');
+                document.location.replace('/chat');
             } else {
                 alert('Login failed. Please check your email and password.');
             }
         }
     });
+
+    signupButton.addEventListener('click', async (event) => {
+        event.preventDefault();
+        console.log(signupButton);
+        document.location.replace('/chat')
+    })
+    
 });
