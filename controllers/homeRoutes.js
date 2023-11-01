@@ -5,11 +5,7 @@ const { Chatroom, User } = require('../models');
 
 router.get('/', async (req, res) => {
 	try {
-<<<<<<< HEAD
-	  res.render('chat', { });
-=======
 		res.render('chat', {});
->>>>>>> main
 	} catch (err) {
 		res.status(500).json(err);
 	}
