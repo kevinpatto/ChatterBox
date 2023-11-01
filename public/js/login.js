@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get references to the login form and its input fields
     const loginForm = document.querySelector('#login-form');
     const usernameInput = document.querySelector('#username')
-    const emailInput = document.querySelector('#email');
-    const passwordInput = document.querySelector('#password');
+    const emailInput = document.querySelector('#login-email');
+    const passwordInput = document.querySelector('#login-passwor');
   
     // Add an event listener to the login form
     loginForm.addEventListener('submit', async (event) => {
