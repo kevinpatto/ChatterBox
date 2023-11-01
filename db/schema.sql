@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS chatrooms_db;
+CREATE DATABASE chatrooms_db;
