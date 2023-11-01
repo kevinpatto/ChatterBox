@@ -37,31 +37,30 @@ router.get('/:profilename', async (req, res) => {
 
 // Route for user login
 router.post('/login', async (req, res) => {
-try {
+  try {
     // Implement user login logic here
     // Verify credentials and create a user session
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
     if (!user) {
-        return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'User not found' });
     }
-    const validPass = await user.checkPassword(password)
+    const validPass = await user.checkPassword(password);
     if (!validPass) {
-        return res.status(401).json({ message: 'Invalid password' });
-    }else{
-        res.status(200).json({ message: 'Login successful', user });
+      return res.status(401).json({ message: 'Invalid password' });
     }
 
     req.session.save(() => {
-        req.session.user_id = userData.id;
-        req.session.logged_in = true;
-        
-        res.json({ user: userData, message: 'You are now logged in!' });
+      req.session.user_id = user.id;
+      req.session.username = user.username;
+      req.session.logged_in = true;
+
+      // Send the response only once, here
+      res.status(200).json({ user, message: 'You are now logged in!' });
     });
-    
-} catch (err) {
+  } catch (err) {
     res.status(500).json(err);
-}
+  }
 });
   
   // Route for user signup

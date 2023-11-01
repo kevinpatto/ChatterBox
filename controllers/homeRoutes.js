@@ -5,10 +5,26 @@ const { Chatroom, User } = require('../models');
 
 router.get('/', async (req, res) => {
 	try {
-	  res.render('login', { });
+		res.render('chat', {});
 	} catch (err) {
-	  res.status(500).json(err);
+		res.status(500).json(err);
 	}
-  });
+});
+
+router.get('/user/login', (req, res) => {
+	if (req.session.loggedIn) {
+		res.redirect('/')
+		return;
+	}
+	res.render('login')
+})
+
+router.get('/user/signup', (req, res) => {
+	if (req.session.loggedIn) {
+		res.redirect('/')
+		return;
+	}
+	res.render('signup')
+})
 
 module.exports = router;
