@@ -1,11 +1,19 @@
 #chat-room-list {
-    position: fixed;
-    top: 0;
-    left: 0;
     padding: 10px;
-    height: 100%;
-    width: 20%; /* Adjust the width as needed */
     background-color: #36393f;
+    color: white;
+    height: 813px;
+}
+#message-input{
+    height: 740px; 
+}
+main {
+    background-color: #36393f;
+}
+#mess-lable {
+    color: white;
+}
+#chat-header{
     color: white;
 }
 
@@ -15,7 +23,7 @@
     margin: 5px 0;
 }
 
-.chat-room-icon {
+.btn-btn-primary {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -59,4 +67,13 @@ body {
 }
 #send-btn{
     width: 7%;
+}
+#logout-button {
+    /* Add styles as needed to make the button visible */
+    display: inline-block; /* Ensure it's displayed */
+    /* Other styling properties (e.g., background color, text color) */
+}
+.nav{
+    height: 6%;
+
 }
