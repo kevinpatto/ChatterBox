@@ -2,6 +2,19 @@
     padding: 10px;
     background-color: #36393f;
     color: white;
+    height: 813px;
+}
+#message-input{
+    height: 740px; 
+}
+main {
+    background-color: #36393f;
+}
+#mess-lable {
+    color: white;
+}
+#chat-header{
+    color: white;
 }
 
 .chat-rooms {
@@ -10,7 +23,7 @@
     margin: 5px 0;
 }
 
-.chat-room-icon {
+.btn-btn-primary {
     width: 30px;
     height: 30px;
     border-radius: 50%;
