@@ -1,14 +1,14 @@
 [
     {
-        "name": "Oliver Anderson",
+        "username": "Oliver Anderson",
         "password": "password123"
     },
     {
-        "name": "Mia Rodriguez",
+        "username": "Mia Rodriguez",
         "password": "password123"
     },
     {
-        "name": "Samuel Parker",
+        "username": "Samuel Parker",
         "password": "password123"
     }
 ]
