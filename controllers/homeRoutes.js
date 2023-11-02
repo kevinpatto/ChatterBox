@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Chatroom, User } = require('../models');
 
+// ENDPOINT /
 // ROUTES NEEDED: TBD
 
 router.get('/', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/user/login', (req, res) => {
 		return;
 	}
 	res.render('login')
-})
+});
 
 router.get('/user/signup', (req, res) => {
 	if (req.session.loggedIn) {
@@ -25,6 +26,6 @@ router.get('/user/signup', (req, res) => {
 		return;
 	}
 	res.render('signup')
-})
+});
 
 module.exports = router;

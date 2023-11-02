@@ -1,9 +1,10 @@
 // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the login form input fields and submit button
-    const passwordInput = document.querySelector('#login-password');
+    console.log('poop');
+    const usernameInput = document.querySelector('#username-input')
+    const passwordInput = document.querySelector('#password-input');
     const loginButton = document.querySelector('#login-btn');
-    const signupButton = document.querySelector('#signup-btn');
 
     // Add an event listener to the login button
     loginButton.addEventListener('click', async (event) => {
@@ -29,11 +30,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
-    signupButton.addEventListener('click', async (event) => {
-        event.preventDefault();
-        console.log(signupButton);
-        document.location.replace('/chat')
-    })
-    
 });
