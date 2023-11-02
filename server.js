@@ -7,8 +7,21 @@ const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const { handleUserInitiatedChat } = require('./chat');
 
 const app = express();
+const http = require('http');
+const socketIo = require('socket.io');
+const server = http.createServer(app);
+const io = socketIo(server);
+
+io.on('connection', (socket) => {
+  // Use the chat handling logic from chat.js
+  handleUserInitiatedChat(socket);
+
+
+});
+
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers

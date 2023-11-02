@@ -69,16 +69,15 @@ router.post('/signup', async (req, res) => {
         // Implement user signup logic here
         // Create a new user in the database
         // Extract user information from the request body
-        const { name, email, password } = req.body;
-        // Check if the email is already in use
-        const existingUser = await User.findOne({ where: { email } });
+        const { name, password } = req.body;
+        // Check if the username is already in use
+        const existingUser = await User.findOne({ where: { name } });
         if (existingUser) {
-        return res.status(400).json({ message: 'Email already in use' });
+        return res.status(400).json({ message: 'Username already in use' });
         }
 
         const newUser = await User.create({
             name,
-            email,
             password,
         });
         res.status(201).json({ message: 'User registered successfully', user: newUser });
