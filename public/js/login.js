@@ -1,7 +1,6 @@
 // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the login form input fields and submit button
-    const emailInput = document.querySelector('#login-email');
     const passwordInput = document.querySelector('#login-password');
     const loginButton = document.querySelector('#login-btn');
     const signupButton = document.querySelector('#signup-btn');
@@ -11,22 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
 
         // Get the values entered by the user for login
-        const email = emailInput.value.trim();
+        const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
 
-        if (email && password) {
-            // Send a POST request to the server to log in
+        if (username && password) {
+            // Send a POST request to the server to log in with both username and password
             const response = await fetch('/api/users/login', {
                 method: 'POST',
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ username, password }),
                 headers: { 'Content-Type': 'application/json' },
             });
-
+    
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful login
                 document.location.replace('/chat');
             } else {
-                alert('Login failed. Please check your email and password.');
+                alert('Login failed. Please check your username and password.');
             }
         }
     });

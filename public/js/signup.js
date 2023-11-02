@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the signup form input fields and submit button
     const usernameInput = document.querySelector('#username-signup');
-    const signupEmailInput = document.querySelector('#signup-email');
     const signupPasswordInput = document.querySelector('#signup-password');
     const signupButton = document.querySelector('#signup-btn');
 
@@ -12,14 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Get the values entered by the user for signup
         const username = usernameInput.value.trim();
-        const signupEmail = signupEmailInput.value.trim();
         const signupPassword = signupPasswordInput.value.trim();
 
-        if (username && signupEmail && signupPassword) {
+        if (username && signupPassword) {
             // Send a POST request to the server to sign up
             const response = await fetch('/api/signup', {
                 method: 'POST',
-                body: JSON.stringify({ username, email: signupEmail, password: signupPassword }),
+                body: JSON.stringify({ username, password: signupPassword }),
                 headers: { 'Content-Type': 'application/json' },
             });
 
