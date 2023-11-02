@@ -1,36 +1,43 @@
-        <div class="nav">
-            <a href="/user/login">Login</a>
-            <a href="/user/signup">Signup</a>
+    <div id="input" class="input-group mb-3 light"> --}}
+        {{!-- <input type="text" class="form-control" placeholder="Wirte text here" aria-label="Recipient's username"
+            aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button> --}}
+        {{!--
+    </div> --}}
+
+    <div class="container text-center">
+        <div class="row">
+            <div id="chat-room-list" class="col-2">
+                ChatterRooms
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-primary" type="button">Button</button>
+                    <button class="btn btn-primary" type="button">Button</button>
+                    <button class="btn btn-primary" type="button">Button</button>
+                </div>
+            </div>
+
+            <div class="col-10">
+
+                <div class="row">
+                    <div class="col">
+                        ChatterRoom
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <form>
+                            <div class="mb-12">
+                                <label for="exampleInputEmail1" class="form-label">Message</label>
+                                <input type="text" class="form-control" id="message" aria-describedby="emailHelp">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
-        <div id="chat-room-list">
-        <h2>Your Chat Rooms</h2>
-        <ul>
-            <!-- List of saved chat-room -->
-            <li class="chat-rooms">
-                <button class="chat-room-icon"></button>
-                <span>chat-room 1</span>
-            </li>
-            <li class="chat-rooms">
-                <button class="chat-room-icon"></button>
-                <span>chat-room 2</span>
-            </li>
-            <li class="chat-rooms">
-                <button class="chat-room-icon"></button>
-                <span>chat-room 3</span>
-            </li>
-     
-        </ul>
     </div>
-    <div id="chat-room">
-        <div id = chat-header>
-        <h2>Chat room</h2>
-        </div>
-    
-    <div id="messages">
-        <!-- Messages will be appended here -->
-     </div> 
-     <div id="input" class="input-group mb-3 light">
-        <input type="text" class="form-control" placeholder="Wirte text here" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
-      </div>
-      <script src="/public/js/script.js"></script>
+    <script src="/js/chat.js"></script>
+
