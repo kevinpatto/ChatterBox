@@ -1,8 +1,8 @@
 // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the signup form input fields and submit button
-    const usernameInput = document.querySelector('#username-signup');
-    const signupPasswordInput = document.querySelector('#signup-password');
+    const usernameInput = document.querySelector('#username-input')
+    const passwordInput = document.querySelector('#password-input');
     const signupButton = document.querySelector('#signup-btn');
 
     // Add an event listener to the signup button
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Get the values entered by the user for signup
         const username = usernameInput.value.trim();
-        const signupPassword = signupPasswordInput.value.trim();
+        const signupPassword = passwordInput.value.trim();
 
         if (username && signupPassword) {
             // Send a POST request to the server to sign up
