@@ -26,17 +26,23 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a href="/user/login" class="nav-link disabled" aria-disabled="true" id="logout-button">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a  href="/user/signup" class="nav-link disabled" aria-disabled="true" id="logout-button">Signup</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true" id="logout-button">logout</a>
-                        </li>
-                    </ul>
+                    <!-- Check if the user is logged in (you'll need to replace this with your actual authentication logic) -->
+                    {{#if userIsLoggedIn}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/profile">{{name}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/logout">Logout</a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a href="/user/login" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/user/signup" class="nav-link">Signup</a>
+                    </li>
+                    {{/if}}
+                </ul>
 
                 </div>
             </div>
