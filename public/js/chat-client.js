@@ -3,6 +3,7 @@ const messageInput = document.querySelector('#message-input');
 const message = document.getElementById('message');
 const sendButton = document.querySelector('#button-addon2');
 const messagesDisplay = document.querySelector('#messages');
+const io = io();
 
 // Add an event listener to the "Send" button
 sendButton.addEventListener('click', () => {
