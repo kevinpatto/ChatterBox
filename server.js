@@ -47,19 +47,21 @@ app.use(morgan('dev'))
 app.use(routes);
 
 io.sockets.on('connection', (socket) => {
-  console.log('a user has joined');
-  socket.on('join', (room) => {
+  console.log(`${socket.id} has joined`);
+  socket.on('join', (room, username) => {
     socket.join(room);
-    socket.in(room).emit('notification', { notifcation: `${req.session.username} has joined` });
+    socket.in(room).emit('notification', { notification: `${username} has joined` });
   });
 
-  socket.on('message', (message) => {
-    io.in(socket.rooms[1]).emit('message', { message, username: req.session.username });
+  socket.on('message', (message, username) => {
+    console.log(message + " " + username);
+    // io.in(socket.rooms[1]).emit('message', { message, username });
   });
 
-  socket.on('disconnect', () => {
-    io.in(socket.rooms[1]).emit('notification', { notifcation: `${req.session.username} has left` });
-  })
+  socket.on('disconnect', (socket) => {
+    console.log(`${socket.id} has disconnected`);
+    // io.in(socket.rooms[1]).emit('notification', { notification: `${username} has left` });
+  });
 });
 
 sequelize.sync({ force: false }).then(() => {
