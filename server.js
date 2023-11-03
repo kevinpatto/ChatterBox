@@ -13,19 +13,6 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const morgan = require('morgan')
 
-io.on('connection', (socket) => {
-  // Use the chat handling logic from chat.js
-  // handleUserInitiatedChat(socket);
-  console.log('connected')
-  socket.on('send-message', (message) => {
-    // save message into database (table: messages)
-    // message table:
-    // (id, userWhoSent, message, chatroomId, time(included by table))
-    // search table by chatroomId
-  })
-});
-
-
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
@@ -58,6 +45,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('dev'))
 app.use(routes);
+
+io.on('connection', (socket) => {
+  // Use the chat handling logic from chat.js
+  // handleUserInitiatedChat(socket);
+  console.log('connected')
+  socket.on('send-message', (message) => {
+    // save message into database (table: messages)
+    // message table:
+    // (id, userWhoSent, message, chatroomId, time(included by table))
+    // search table by chatroomId
+  })
+});
 
 sequelize.sync({ force: false }).then(() => {
   http.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}`));
