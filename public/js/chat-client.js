@@ -5,7 +5,8 @@ const messagesDisplay = document.getElementById('messages');
 const roomID = document.getElementById('room-ID')
 const user = document.getElementById('username');
 
-// io.emit('join', roomID);
+const roomIDvalue = roomID.value;
+io.emit('join', roomIDvalue);
 
 
 // Add an event listener to the "Send" button
