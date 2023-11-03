@@ -1,14 +1,18 @@
 <section class="col-12 col-md-6 row">
     <div class="align-self-center">
         <ul id="messages" class="list-group">
-            <li class="list-group-item">beginning of chat {{chatroom.room_name}}...</li>
+            <li class="list-group-item">beginning of chat {{chatroom.room_name}} id: <span id="room-ID">{{chatroom.id}}</span>...</li>
         </ul>
         <form class="form-control" id="form" action="">
             <div class="input-group mb-3">
                 <input id="message" type="text" class="form-control">
-                <button id="send-btn" class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+                <button id="send-btn" class="btn btn-outline-secondary" type="button">Send</button>
             </div>
         </form>
     </div>
 </section>
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script>
+    var io = io();
+</script>
 <script src="/js/chat-client.js"></script>

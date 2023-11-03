@@ -1,20 +1,23 @@
 // Select relevant HTML elements
-const messageInput = document.querySelector('#message-input');
 const message = document.getElementById('message');
-const sendButton = document.querySelector('#button-addon2');
-const messagesDisplay = document.querySelector('#messages');
-const io = io();
+const sendButton = document.getElementById('send-btn');
+const messagesDisplay = document.getElementById('messages');
+const roomID = document.getElementById('room-ID')
+
+// io.emit('join', roomID);
+
 
 // Add an event listener to the "Send" button
 sendButton.addEventListener('click', async (event) => {
     event.preventDefault();
-
+    console.log("clicked")
     const messageValue = message.value;
     if (messageValue) {
-        console.log('message sent')
+        console.log(':' + messageValue)
         // Emit a "send-message" event to the server
-        io.emit('send-message', messageValue);
+        io.emit('message', messageValue);
         // Clear the input field
         message.value = '';
     }
 });
+
