@@ -7,20 +7,25 @@ const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const { handleUserInitiatedChat } = require('./public/js/chat');
+const { handleUserInitiatedChat } = require('./public/js/chat-server');
 
 const app = express();
-const http = require('http');
-const socketIo = require('socket.io');
-const server = http.createServer(app);
-const io = socketIo(server);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const morgan = require('morgan')
 
 io.on('connection', (socket) => {
   // Use the chat handling logic from chat.js
-  handleUserInitiatedChat(socket);
-
-
+  // handleUserInitiatedChat(socket);
+  console.log('connected')
+  socket.on('send-message', (message) => {
+    // save message into database (table: messages)
+    // message table:
+    // (id, userWhoSent, message, chatroomId, time(included by table))
+    // search table by chatroomId
+  })
 });
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -52,8 +57,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(morgan('dev'))
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}`));
+  http.listen(PORT, () => console.log(`Now listening http://localhost:${PORT}`));
 });

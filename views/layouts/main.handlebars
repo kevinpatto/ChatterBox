@@ -27,10 +27,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="/user/login" class="nav-link disabled" aria-disabled="true" id="logout-button">Login</a>
+                            <a href="/user/login" class="nav-link enable" aria-disabled="true" id="logout-button">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a  href="/user/signup" class="nav-link disabled" aria-disabled="true" id="logout-button">Signup</a>
+                            <a  href="/user/signup" class="nav-link enable" aria-disabled="true" id="logout-button">Signup</a>
                         </li>
 
                         <li class="nav-item">
@@ -44,6 +44,11 @@
         <main>
             {{{body}}}
         </main>
+
+        <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+        <script>
+            var io = io();
+        </script>
 </body>
 
 </html>
