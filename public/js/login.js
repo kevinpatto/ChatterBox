@@ -1,7 +1,6 @@
 // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the login form input fields and submit button
-    console.log('poop');
     const usernameInput = document.querySelector('#username-input')
     const passwordInput = document.querySelector('#password-input');
     const loginButton = document.querySelector('#login-btn');
@@ -24,9 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful login
-                document.location.replace('/chat');
+                document.location.replace('/');
             } else {
-                alert('Login failed. Please check your username and password.');
+                alert(response.statusText);
             }
         }
     });
