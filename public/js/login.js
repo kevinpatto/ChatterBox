@@ -1,9 +1,9 @@
 // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the login form input fields and submit button
-    const usernameInput = document.querySelector('#username-input')
-    const passwordInput = document.querySelector('#password-input');
-    const loginButton = document.querySelector('#login-btn');
+    const usernameInput = document.getElementById('username-input')
+    const passwordInput = document.getElementById('password-input');
+    const loginButton = document.getElementById('login-btn');
 
     // Add an event listener to the login button
     loginButton.addEventListener('click', async (event) => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (username && password) {
             // Send a POST request to the server to log in with both username and password
-            const response = await fetch('/api/users/login', {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 body: JSON.stringify({ username, password }),
                 headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful login
-                document.location.replace('/');
+                document.location.replace('/chat');
             } else {
                 alert(response.statusText);
             }
