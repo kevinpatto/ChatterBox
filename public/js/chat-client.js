@@ -6,7 +6,9 @@ const messagesDisplay = document.querySelector('#messages');
 const io = io();
 
 // Add an event listener to the "Send" button
-sendButton.addEventListener('click', () => {
+sendButton.addEventListener('click', async (event) => {
+    event.preventDefault();
+
     const messageValue = message.value;
     if (messageValue) {
         console.log('message sent')
