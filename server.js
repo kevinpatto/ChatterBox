@@ -55,7 +55,8 @@ io.on('connection', (socket) => {
     // message table:
     // (id, userWhoSent, message, chatroomId, time(included by table))
     // search table by chatroomId
-  })
+    console.log(message);
+  });
 });
 
 sequelize.sync({ force: false }).then(() => {
