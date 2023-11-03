@@ -3,18 +3,6 @@ const { User } = require('../../models');
 
 // ENDPOINT /api/users
 
-// Route to view a user's profile
-router.get('/:profilename', async (req, res) => {
-  const profilename = req.params.profilename;
-  try {
-    // Fetch user information and display their profile
-    // Implement logic to view user profiles
-
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 // Route for user login
 router.post('/login', async (req, res) => {
   try {
