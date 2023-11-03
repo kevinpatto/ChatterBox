@@ -4,6 +4,15 @@ const { Chatroom, User } = require('../models');
 // ENDPOINT /
 // ROUTES NEEDED: TBD
 
+router.get('/', async (req, res) => {
+	// for now, it will just render the same page as /chat. in the future, it will render homepage.handlebars
+	try {
+		res.render('chat', { logged_in: req.session.logged_in, username: req.session.username });
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.get('/chat', async (req, res) => {
 	try {
 		res.render('chat', { logged_in: req.session.logged_in, username: req.session.username });
