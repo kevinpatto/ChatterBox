@@ -5,6 +5,9 @@
             {{#each chatrooms as |chatroom| }}
             <li class="list-group-item"><a href="/chat/{{chatroom.id}}">{{chatroom.room_name}}</a></li>
             {{/each}}
+            <input id="room-name" type="text" placeholder="Enter Chat Room Name"></input>
+            <button id="create-room">Create text room</button>
         </ul>
     </div>
 </section>
+<script src="../js/createRoom.js"></script>

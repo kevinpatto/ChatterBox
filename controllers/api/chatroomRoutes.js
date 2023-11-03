@@ -27,5 +27,18 @@ router.get('/chat/:chatroomId', async (req, res) => {
     res.status(500).json(err);
   }
 });
+// handles creating chat room and posts it to the db
+router.post('/create', async (req,res) => {
+  try {
+    const {roomName, userId} = req.body;
 
+    const chatroom = await Chatroom.create({
+      room_name: roomName,
+      user_id: userId
+    })
+    res.status(201).json(chatroom);
+  }catch(err){
+    res.status(500).json(err);
+  }
+})
 module.exports = router;
