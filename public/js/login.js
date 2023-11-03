@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful login
-                document.location.replace('/chat');
+                document.location.replace('/');
             } else {
                 alert(response.statusText);
             }
