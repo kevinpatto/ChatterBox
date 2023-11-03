@@ -49,8 +49,15 @@ router.post('/signup', async (req, res) => {
       username,
       password,
     });
-    res.status(201).json({ message: 'User registered successfully', user: newUser });
-
+    
+    // Log the user in by setting up a user session
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.username = newUser.username;
+      req.session.logged_in = true;
+      res.status(201).json({ message: 'User registered successfully', user: newUser });
+    });
+    
   } catch (err) {
     res.status(500).json(err);
   }
