@@ -8,7 +8,7 @@ const { Chatroom } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const chatroomsData = await Chatroom.findAll();
-    
+
     const chatrooms = chatroomsData.map((chatroom) => chatroom.get({ plain: true }));
 
     res.json(chatrooms);
@@ -19,9 +19,9 @@ router.get('/', async (req, res) => {
 
 // Route to join or interact with a specific chatroom
 router.get('/chat/:chatroomId', async (req, res) => {
-  const chatroomId = req.params.chatroomId;
   try {
     // Implement logic to join a specific chatroom or send messages
+    const chatroomId = req.params.chatroomId;
 
   } catch (err) {
     res.status(500).json(err);
