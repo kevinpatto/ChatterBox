@@ -12,17 +12,17 @@ router.get('/chat', async (req, res) => {
 	}
 });
 
-router.get('/user/login', (req, res) => {
+router.get('/login', (req, res) => {
 	if (req.session.loggedIn) {
-		res.redirect('/')
+		res.redirect('/users/chat')
 		return;
 	}
 	res.render('login')
 });
 
-router.get('/user/signup', (req, res) => {
+router.get('/signup', (req, res) => {
 	if (req.session.loggedIn) {
-		res.redirect('/')
+		res.redirect('/users/chat')
 		return;
 	}
 	res.render('signup')
