@@ -4,7 +4,7 @@ const { Chatroom, User } = require('../models');
 // ENDPOINT /
 // ROUTES NEEDED: TBD
 
-router.get('/', async (req, res) => {
+router.get('/chat', async (req, res) => {
 	try {
 		res.render('chat', { logged_in: req.session.logged_in, username: req.session.username });
 	} catch (err) {
