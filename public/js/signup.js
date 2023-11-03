@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful sign-up
-                document.location.replace('/chat');
+                document.location.replace('/');
             } else {
                 alert('Sign-up failed. Please check your information and try again.');
             }
