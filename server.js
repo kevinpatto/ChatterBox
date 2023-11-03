@@ -50,15 +50,17 @@ io.sockets.on('connection', (socket) => {
   console.log('a user has joined');
   socket.on('join', (room) => {
     socket.join(room);
-    socket.in(room).emit('notification', { notifcation: `${req.session.username} has joined` });
+    socket.in(room).emit('notification', { notifcation: `${session.username} has joined` });
   });
 
   socket.on('message', (message) => {
-    io.in(socket.rooms[1]).emit('message', { message, username: req.session.username });
+    console.log(message)
+    io.in(socket.rooms[1]).emit('message', { message, username: session.username });
   });
 
   socket.on('disconnect', () => {
-    io.in(socket.rooms[1]).emit('notification', { notifcation: `${req.session.username} has left` });
+    console.log("disconnected")
+    io.in(socket.rooms[1]).emit('notification', { notifcation: `${session.username} has left` });
   })
 });
 
