@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Redirect to a dashboard page or perform some action upon successful login
                 document.location.replace('/');
             } else {
-                alert('Login failed. Please check your username and password.');
+                alert(response.statusText);
             }
         }
     });
