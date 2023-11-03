@@ -1,9 +1,9 @@
 // Wait for the DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the signup form input fields and submit button
-    const usernameInput = document.querySelector('#username-input')
-    const passwordInput = document.querySelector('#password-input');
-    const signupButton = document.querySelector('#signup-btn');
+    const usernameInput = document.getElementById('username-input')
+    const passwordInput = document.getElementById('password-input');
+    const signupButton = document.getElementById('signup-btn');
 
     // Add an event listener to the signup button
     signupButton.addEventListener('click', async (event) => {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (username && signupPassword) {
             // Send a POST request to the server to sign up
-            const response = await fetch('/api/users/signup', {
+            const response = await fetch('/api/signup', {
                 method: 'POST',
                 body: JSON.stringify({ username, password: signupPassword }),
                 headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful sign-up
-                document.location.replace('/');
+                document.location.replace('/chat');
             } else {
                 alert('Sign-up failed. Please check your information and try again.');
             }

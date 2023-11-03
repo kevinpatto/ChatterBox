@@ -7,7 +7,6 @@ const helpers = require('./utils/helpers');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const { handleUserInitiatedChat } = require('./public/js/chat-server');
 
 const app = express();
 const http = require('http').Server(app);
