@@ -47,20 +47,23 @@ app.use(morgan('dev'))
 app.use(routes);
 
 io.sockets.on('connection', (socket) => {
-  console.log(`${socket.id} has joined`);
-  socket.on('join', (room, username) => {
+  socket.on('join', (data) => {
+    const { room, username } = data;
+    const sockID = socket.id;
+    console.log(`${username} of socket ID ${sockID} has joined`);
     socket.join(room);
+    console.log(`${username} has been added to room number ${room}`);
     socket.in(room).emit('notification', { notification: `${username} has joined` });
-  });
 
-  socket.on('message', (message, username) => {
-    console.log(message + " " + username);
-    // io.in(socket.rooms[1]).emit('message', { message, username });
-  });
+    socket.on('message', (message, username) => {
+      console.log(message + " " + username);
+      io.in(room).emit('message', { sent: message, username });
+    });
 
-  socket.on('disconnect', (socket) => {
-    console.log(`${socket.id} has disconnected`);
-    // io.in(socket.rooms[1]).emit('notification', { notification: `${username} has left` });
+    socket.on('disconnect', (socket) => {
+      console.log(`${username} of ${sockID} has disconnected from room ${room}`);
+      io.in(room).emit('notification', { notification: `${username} has left` });
+    });
   });
 });
 
