@@ -5,7 +5,7 @@ const auth = require('../utils/auth')
 // ENDPOINT /
 // ROUTES NEEDED: TBD
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
 	try {
 		const chatroomsData = await Chatroom.findAll();
 
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 // 	}
 // });
 
-router.get('/chat/:id', async (req, res) => {
+router.get('/chat/:id', auth, async (req, res) => {
 	try {
 		const chatroomData = await Chatroom.findByPk(req.params.id, {});
 

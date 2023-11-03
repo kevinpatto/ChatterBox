@@ -11,7 +11,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const morgan = require('morgan')
+const morgan = require('morgan');
 
 const PORT = process.env.PORT || 3001;
 
@@ -46,17 +46,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'))
 app.use(routes);
 
-io.on('connection', (socket) => {
-  // Use the chat handling logic from chat.js
-  // handleUserInitiatedChat(socket);
-  console.log('connected')
-  socket.on('send-message', (message) => {
-    // save message into database (table: messages)
-    // message table:
-    // (id, userWhoSent, message, chatroomId, time(included by table))
-    // search table by chatroomId
-    console.log(message);
+io.sockets.on('connection', (socket) => {
+  console.log('a user has joined');
+  socket.on('join', (room) => {
+    socket.join(room);
+    socket.in(room).emit('notification', { notifcation: `${session.username} has joined` });
   });
+
+  socket.on('message', (message) => {
+    console.log(message)
+    io.in(socket.rooms[1]).emit('message', { message, username: session.username });
+  });
+
+  socket.on('disconnect', () => {
+    console.log("disconnected")
+    io.in(socket.rooms[1]).emit('notification', { notifcation: `${session.username} has left` });
+  })
 });
 
 sequelize.sync({ force: false }).then(() => {
