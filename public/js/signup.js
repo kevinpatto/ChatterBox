@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (username && signupPassword) {
             // Send a POST request to the server to sign up
-            const response = await fetch('/api/signup', {
+            const response = await fetch('/api/users/signup', {
                 method: 'POST',
                 body: JSON.stringify({ username, password: signupPassword }),
                 headers: { 'Content-Type': 'application/json' },
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 // Redirect to a dashboard page or perform some action upon successful sign-up
-                document.location.replace('/chat');
+                document.location.replace('/');
             } else {
                 alert('Sign-up failed. Please check your information and try again.');
             }
