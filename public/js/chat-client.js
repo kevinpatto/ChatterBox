@@ -4,6 +4,7 @@ const sendButton = document.getElementById('send-btn');
 const messagesDisplay = document.getElementById('messages');
 const roomID = document.getElementById('room-ID')
 const user = document.getElementById('username');
+const formEl = document.querySelector('#form');
 
 io.emit('join', { room: roomID.textContent, username: user.textContent });
 
@@ -40,8 +41,7 @@ io.on('message', (data) => {
     messagesDisplay.append(liEl);
 });
 
-// Add an event listener to the "Send" button
-sendButton.addEventListener('click', async (event) => {
+const sendMessage = (async (event) => {
     event.preventDefault();
     const messageValue = message.value;
     const userValue = user.textContent;
@@ -52,3 +52,7 @@ sendButton.addEventListener('click', async (event) => {
         message.value = '';
     }
 });
+
+// Add an event listener to the "Send" button
+sendButton.addEventListener('click', sendMessage);
+form.addEventListener('submit', sendMessage);
