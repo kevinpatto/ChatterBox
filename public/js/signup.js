@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (username && signupPassword) {
             // Send a POST request to the server to sign up
-            const response = await fetch('/api/signup', {
+            const response = await fetch('/api/users/signup', {
                 method: 'POST',
                 body: JSON.stringify({ username, password: signupPassword }),
                 headers: { 'Content-Type': 'application/json' },
