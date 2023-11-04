@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 // Route to join or interact with a specific chatroom
-router.get('/chat/:chatroomId', async (req, res) => {
+router.get('/:chatroomId', async (req, res) => {
   try {
     // Implement logic to join a specific chatroom or send messages
     const chatroomId = req.params.chatroomId;
@@ -27,18 +27,22 @@ router.get('/chat/:chatroomId', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 // handles creating chat room and posts it to the db
-router.post('/create', async (req,res) => {
+router.post('/create', async (req, res) => {
   try {
-    const {roomName, userId} = req.body;
+    const { roomName } = req.body;
+    console.log(roomName);
 
     const chatroom = await Chatroom.create({
       room_name: roomName,
-      user_id: userId
-    })
+      user_id: req.session.user_id,
+    });
+
     res.status(201).json(chatroom);
-  }catch(err){
+  } catch (err) {
     res.status(500).json(err);
   }
-})
+});
+
 module.exports = router;

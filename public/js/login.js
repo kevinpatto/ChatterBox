@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (username && password) {
             // Send a POST request to the server to log in with both username and password
-            const response = await fetch('/api/login', {
+            const response = await fetch('/api/users/login', {
                 method: 'POST',
                 body: JSON.stringify({ username, password }),
                 headers: { 'Content-Type': 'application/json' },
