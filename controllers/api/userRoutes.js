@@ -35,14 +35,19 @@ router.post('/login', async (req, res) => {
 // Route for user signup
 router.post('/signup', async (req, res) => {
   try {
-    // Implement user signup logic here
-    // Create a new user in the database
-    // Extract user information from the request body
     const { username, password } = req.body;
     // Check if the username is already in use
     const existingUser = await User.findOne({ where: { username } });
     if (existingUser) {
       return res.status(400).json({ message: 'Username already in use' });
+    }
+
+    // check if there are 20 or more users
+    const usersData = await User.findAll();
+    console.log(usersData);
+    const users = await usersData.map((usersData) => usersData.get({ plain: true }));
+    if (users.length >= 20) {
+      req.status(400).json({ message: 'Too many users registered (spam prevention)' });
     }
 
     const newUser = await User.create({
