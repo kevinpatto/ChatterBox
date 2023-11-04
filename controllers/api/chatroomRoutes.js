@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Chatroom } = require('../../models');
+const { Chatroom, User } = require('../../models');
 
 // ENDPOINT /api/chatrooms
 // ROUTES NEEDED: TBD
@@ -31,6 +31,21 @@ router.get('/:chatroomId', async (req, res) => {
 // handles creating chat room and posts it to the db
 router.post('/create', async (req, res) => {
   try {
+    const usersData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          model: Chatroom
+        },
+      ],
+    });
+
+    const user = usersData.get({ plain: true });
+    
+    if (user.chatrooms && user.chatrooms.length >= 3) {
+      res.status(400).json({ message: 'Max chatrooms of three per user reached (spam prevention)' });
+      return;
+    }
+
     const { roomName } = req.body;
     console.log(roomName);
 
