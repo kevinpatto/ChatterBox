@@ -16,6 +16,7 @@ createButton.addEventListener('click', async () => {
             });
             if (response.ok) {
                 roomName.value = '';
+                document.location.replace('/profile');
             } else {
                 console.error('Failed to create chatroom')
             }
