@@ -16,4 +16,4 @@ Morgan: Morgan is a popular Node.js middleware for logging HTTP requests. It's u
 ![Alt text](image.png)
 
 ## Link to Deployed Application
-(https://grisly-skeleton-98871-e156069b1ed4.herokuapp.com/login)https://grisly-skeleton-98871-e156069b1ed4.herokuapp.com/login
+https://grisly-skeleton-98871-e156069b1ed4.herokuapp.com
